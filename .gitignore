@@ -1,0 +1,4 @@
+*.mp3
+__pycachz__
+original/*
+translated/*
