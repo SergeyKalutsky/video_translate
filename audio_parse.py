@@ -2,11 +2,9 @@
 from tqdm import tqdm
 from datetime import datetime
 from pydub import AudioSegment
+from text import parse_subtitles
 
-with open('text.txt', 'r', encoding='utf-8') as f:
-    data = f.readlines()
-time = [line.replace('\n', '') for line in data if ':' in line]
-
+texts, times = parse_subtitles('text.txt')
 
 def time_diff(time1, time2):
     t1 = datetime.strptime(time1, '%M:%S')
@@ -17,7 +15,7 @@ def time_diff(time1, time2):
 
 
 song = AudioSegment.from_mp3("music.mp3")
-for i in tqdm(range(len(time)-1)):
-    ts1, ts2 = time_diff(time[i], time[i+1])
+for i in tqdm(range(len(times)-1)):
+    ts1, ts2 = time_diff(times[i], times[i+1])
     segment = song[ts1:ts2]
     segment.export(f'original/{i}.mp3', format='mp3')

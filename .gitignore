@@ -1,4 +1,5 @@
 *.mp3
-__pycachz__
+__pycache__
 original/*
 translated/*
+credentials.py
