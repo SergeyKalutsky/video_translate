@@ -31,6 +31,7 @@ sentences = []
 for i in tqdm(range((len(texts)//10)+1)):
     body['texts'] = texts[i*10:(i*10)+10]
     response = requests.post(url, json=body, headers=headers)
+    # print(response)
     sentences += parse_response(response)
     sleep(0.2)
 

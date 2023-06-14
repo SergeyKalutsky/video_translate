@@ -1,6 +1,10 @@
+import os
+import shutil
 from tqdm import tqdm
 from gtts import gTTS
 
+shutil.rmtree('translated')
+os.mkdir('translated')
 with open('translate.txt', 'r', encoding='utf-8') as f:
     data = [i.replace('\n', '') for i in f.readlines()]
     

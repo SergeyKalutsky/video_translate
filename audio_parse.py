@@ -1,8 +1,12 @@
-# https://tuberipper.com/294/ -getting mp3 files
+import os
+import shutil
 from tqdm import tqdm
 from datetime import datetime
 from pydub import AudioSegment
 from text import parse_subtitles
+
+shutil.rmtree('original')
+os.mkdir('original')
 
 texts, times = parse_subtitles('text.txt')
 
